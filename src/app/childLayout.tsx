@@ -6,7 +6,9 @@ export default function ChildLayout({ children }: { children: React.ReactNode })
     return (
         <>
             <Header />
-            {children}
+            <main className="min-h-screen bg-foreground">
+                {children}
+            </main>
             <Footer />
         </>
     )
