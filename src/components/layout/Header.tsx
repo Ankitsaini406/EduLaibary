@@ -35,7 +35,7 @@ export default function Header() {
     return (
         <header className="sticky top-0 p-5 shadow-lg bg-white/50 backdrop-blur-lg">
             <nav className="container flex justify-between mx-auto">
-                <h1 className="text-2xl bg-gradient-to-b from-red-400 to-yellow-400 bg-clip-text text-transparent">EduLaibary</h1>
+                <h1 className="text-2xl bg-gradient-to-b from-red-400 to-yellow-400 bg-clip-text text-transparent">EduLibrary</h1>
                 <ul className="flex gap-5">
                     {
                         items.map((item) => {
