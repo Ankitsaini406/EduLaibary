@@ -13,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className='flex flex-col min-h-screen !scroll-smooth'>
+    <html lang="en" className="!scroll-smooth">
+      <body className='flex flex-col min-h-screen'>
         <ChildLayout>
           {children}
         </ChildLayout>

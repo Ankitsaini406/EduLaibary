@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Close, Menu } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -25,13 +26,13 @@ export default function Header() {
                 </h1>
 
                 {/* Desktop Menu */}
-                <ul className="hidden ipad:flex gap-5">
+                <div className="hidden ipad:flex gap-5">
                     {items.map((item) => (
-                        <li key={item.title} className="cursor-pointer text-lg hover:text-accent duration-300">
+                        <Link key={item.title} href={item.link} className="cursor-pointer text-lg hover:text-accent duration-300">
                             {item.title}
-                        </li>
+                        </Link>
                     ))}
-                </ul>
+                </div>
 
                 {/* Mobile Menu Button */}
                 <button
@@ -53,16 +54,17 @@ export default function Header() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                        <ul className="flex flex-col gap-4 mt-5">
+                        <div className="flex flex-col gap-4 mt-5">
                             {items.map((item) => (
-                                <li
-                                    key={item.title}
+                                <Link
+                                key={item.title}
+                                href={item.link}
                                     className="cursor-pointer text-base hover:text-amber-500 duration-300 pb-2 border-b"
                                 >
                                     {item.title}
-                                </li>
+                                </Link>
                             ))}
-                        </ul>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
