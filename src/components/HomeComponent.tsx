@@ -11,6 +11,7 @@ const fadeInUp = {
 export function AboutUs() {
     return (
         <motion.div
+            id='about-us'
             className="bg-white p-5"
             variants={fadeInUp}
             initial="hidden"
@@ -33,6 +34,7 @@ export function AboutUs() {
 export function Features() {
     return (
         <motion.div
+            id='features'
             className="bg-accent"
             variants={fadeInUp}
             initial="hidden"
@@ -68,6 +70,7 @@ export function PriceSection() {
 
     return (
         <motion.div
+            id='pricing'
             className="bg-white p-5 text-center"
             variants={fadeInUp}
             initial="hidden"

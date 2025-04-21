@@ -9,12 +9,12 @@ export default function Header() {
 
     const items = [
         { title: "Home", link: "/" },
-        { title: "About Us", link: "#" },
-        { title: "Features", link: "#" },
-        { title: "Pricing", link: "#" },
-        { title: "Testimonials", link: "#" },
-        { title: "Download", link: "#" },
-        { title: "Contact", link: "#" }
+        { title: "Features", link: "#features" },
+        { title: "Pricing", link: "#pricing" },
+        // { title: "Testimonials", link: "#" },
+        { title: "Download", link: "#download" },
+        { title: "Contact", link: "#contact" },
+        { title: "About Us", link: "#about-us" },
     ];
 
     return (
