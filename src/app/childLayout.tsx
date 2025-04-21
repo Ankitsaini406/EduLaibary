@@ -7,7 +7,7 @@ export default function ChildLayout({ children }: { children: React.ReactNode })
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-foreground">
+            <main className="min-h-screen">
                 {children}
             </main>
             <TailwindIndicator />

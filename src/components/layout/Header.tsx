@@ -20,14 +20,14 @@ export default function Header() {
     return (
         <header className="fixed w-full top-0 z-50 p-5 shadow-lg bg-white/50 backdrop-blur-lg">
             <nav className="lg:container flex justify-between items-center mx-auto">
-                <h1 className="text-2xl bg-gradient-to-b from-red-400 to-yellow-400 bg-clip-text text-transparent">
+                <h1 className="text-2xl font-bold bg-gradient-to-b from-accent to-yellow-400 bg-clip-text text-transparent">
                     EduLibrary
                 </h1>
 
                 {/* Desktop Menu */}
                 <ul className="hidden ipad:flex gap-5">
                     {items.map((item) => (
-                        <li key={item.title} className="cursor-pointer text-lg hover:text-amber-500 duration-300">
+                        <li key={item.title} className="cursor-pointer text-lg hover:text-accent duration-300">
                             {item.title}
                         </li>
                     ))}
