@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import TailwindIndicator from "@/lib/tailwindIndicater";
 
 
 export default function ChildLayout({ children }: { children: React.ReactNode }) {
@@ -9,6 +10,7 @@ export default function ChildLayout({ children }: { children: React.ReactNode })
             <main className="min-h-screen bg-foreground">
                 {children}
             </main>
+            <TailwindIndicator />
             <Footer />
         </>
     )

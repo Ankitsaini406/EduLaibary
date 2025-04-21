@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography } from "@mui/material"
+import { ArrowRightAlt } from "@mui/icons-material"
 
 export function AboutUs() {
     return (
@@ -38,16 +38,53 @@ export function PriceSection() {
         <div className="bg-white p-5 text-center">
             <h3 className="text-orange-400 pb-4">Pricing</h3>
             <h2 className="text-black font-bold text-3xl pb-1">Pricing that frows with you</h2>
-            <p className="text-gray-700 w-1/2 mx-auto">Choose and affordable plan that's packed with the best features for engaging yout audience, creating customer loyalty, and driving sales.</p>
+            <p className="text-gray-700 md:w-1/2 mx-auto mb-8">Choose and affordable plan that&apos;s packed with the best features for engaging yout audience, creating customer loyalty, and driving sales.</p>
 
-            <div className="flex flex-col md:flex-row gap-2.5">
-                <Card>
-                    <CardContent>
-                        <h4 className="font-black">Freelancer</h4>
-                        <h5 className="text-gray-700">The esentials to provide your best work for clients.</h5>
-                        <h6 className="text-5xl">₹200<span className="text-base">/month</span></h6>
-                    </CardContent>
-                </Card>
+            <div className="flex flex-col md:flex-row gap-2.5 justify-center pb-10">
+
+                <section className="border border-border bg-white text-left rounded-xl p-5 flex flex-col items-center gap-3">
+                    <h4 className="font-black">Silver</h4>
+                    <h5 className="text-gray-700">The esentials to provide your best work for clients.</h5>
+                    <h6 className="text-4xl">₹200<span className="text-base"> /month</span></h6>
+                    <button className="py-1.5 border border-accent cursor-pointer w-full">Buy Plan</button>
+                    <div className="flex flex-col gap-2.5 w-full">
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> 5 Products</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Up to 1,000 subscribers</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Basic analytics</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> 48-hour support response time</div>
+                    </div>
+                </section>
+
+                <section className="border border-border bg-white text-left rounded-xl p-5 flex flex-col items-center gap-3 scale-100 md:scale-110">
+                    <h4 className="font-black">Platinum</h4>
+                    <h5 className="text-gray-700">The esentials to provide your best work for clients.</h5>
+                    <h6 className="text-4xl">₹600<span className="text-base"> /month</span></h6>
+                    <button className="py-1.5 border bg-accent text-white border-accent cursor-pointer w-full">Buy Plan</button>
+                    <div className="flex flex-col gap-2.5 w-full">
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> 5 Products</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Up to 1,000 subscribers</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Basic analytics</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Basic analytics</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Basic analytics</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Basic analytics</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> 48-hour support response time</div>
+                    </div>
+                </section>
+
+                <section className="border border-border bg-white text-left rounded-xl p-5 flex flex-col items-center gap-3">
+                    <h4 className="font-black">Gold</h4>
+                    <h5 className="text-gray-700">The esentials to provide your best work for clients.</h5>
+                    <h6 className="text-4xl">₹500<span className="text-base"> /month</span></h6>
+                    <button className="py-1.5 border border-accent cursor-pointer w-full">Buy Plan</button>
+                    <div className="flex flex-col gap-2.5 w-full">
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> 5 Products</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Up to 1,000 subscribers</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Up to 1,000 subscribers</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Up to 1,000 subscribers</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> Basic analytics</div>
+                        <div className="text-secendory"><ArrowRightAlt className="text-accent" /> 48-hour support response time</div>
+                    </div>
+                </section>
             </div>
         </div>
     )
