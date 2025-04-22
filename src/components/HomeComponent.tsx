@@ -77,7 +77,6 @@ export function PriceSection() {
             whileInView="visible"
             viewport={{ once: true }}
         >
-            <h3 className="text-orange-400 pb-4">Pricing</h3>
             <h2 className="text-black font-bold text-3xl pb-1">Pricing that grows with you</h2>
             <p className="text-gray-700 md:w-1/2 mx-auto mb-8">
                 Choose an affordable plan that&apos;s packed with the best features for engaging your audience, creating customer loyalty, and driving sales.
