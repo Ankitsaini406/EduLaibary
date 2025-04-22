@@ -1,6 +1,11 @@
 "use client";
 
-import GppGoodIcon from '@mui/icons-material/GppGood';
+import DoneIcon from '@mui/icons-material/Done';
+import EventSeatIcon from '@mui/icons-material/EventSeat';
+import Diversity3Icon from '@mui/icons-material/Diversity3';
+import SmsIcon from '@mui/icons-material/Sms';
+import ReportIcon from '@mui/icons-material/Report';
+import CollectionsIcon from '@mui/icons-material/Collections';
 import { motion } from "framer-motion";
 
 const fadeInUp = {
@@ -12,7 +17,7 @@ export function AboutUs() {
     return (
         <motion.div
             id='about-us'
-            className="bg-white p-5"
+            className="bg-white p-5 mt-5"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -42,8 +47,49 @@ export function Features() {
             viewport={{ once: true }}
         >
             <div className="max-w-[1400px] mx-auto p-5">
-                <h1 className="uppercase text-3xl text-white text-center font-bold">Our Key Features</h1>
-                <div className="grid grid-cols-5">{/* Your future feature items */}</div>
+                <h1 className="uppercase text-3xl text-white text-center font-bold pb-6">Our Key Features</h1>
+                <div className="flex flex-wrap justify-center gap-5 w-full">
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <span><EventSeatIcon fontSize='large' /></span>
+                        <p className="text-sm text-secendory">Seat Management</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <ReportIcon fontSize='large' />
+                        <p className="text-sm text-secendory">Shift Management</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <Diversity3Icon fontSize='large' />
+                        <p className="text-sm text-secendory">Member Management</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <SmsIcon fontSize='large' />
+                        <p className="text-sm text-secendory">Auto SMS Reminder</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <ReportIcon fontSize='large' />
+                        <p className="text-sm text-secendory">Branch Management</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <CollectionsIcon fontSize='large' />
+                        <p className="text-sm text-secendory">Collection Report</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <ReportIcon fontSize='large' />
+                        <p className="text-sm text-secendory">Enquiry Management</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <ReportIcon fontSize='large' />
+                        <p className="text-sm text-secendory">Attendance Management</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <ReportIcon fontSize='large' />
+                        <p className="text-sm text-secendory">Expense Management</p>
+                    </div>
+                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
+                        <ReportIcon fontSize='large' />
+                        <p className="text-sm text-secendory">Tax Management</p>
+                    </div>
+                </div>
             </div>
         </motion.div>
     );
@@ -98,7 +144,7 @@ export function PriceSection() {
                         <div className="flex flex-col gap-2.5 w-full">
                             {features.map((feature, idx) => (
                                 <div key={idx} className="text-secendory">
-                                    <GppGoodIcon className="text-accent" /> {feature}
+                                    <DoneIcon className="text-accent" /> {feature}
                                 </div>
                             ))}
                         </div>

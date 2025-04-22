@@ -15,7 +15,7 @@ export default function Footer() {
                 </div>
 
                 {/* Quick Links */}
-                <div>
+                {/* <div>
                     <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
                     <ul className="space-y-1 text-gray-300 text-sm">
                         <li><a href="#features" className="hover:text-accent">Features</a></li>
@@ -24,7 +24,7 @@ export default function Footer() {
                         <li><a href="#about-us" className="hover:text-accent">About Us</a></li>
                         <li><a href="#contact" className="hover:text-accent">Contact</a></li>
                     </ul>
-                </div>
+                </div> */}
 
 
                 <div>
