@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Close, Menu } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -19,16 +20,16 @@ export default function Header() {
     ];
 
     return (
-        <header className="fixed w-full top-0 z-50 p-5 shadow-lg bg-white/50 backdrop-blur-lg">
+        <header className="fixed w-full top-0 z-50 py-3 shadow-lg bg-accent text-white backdrop-blur-lg">
             <nav className="lg:container flex justify-between items-center mx-auto">
-                <h1 className="text-2xl font-bold bg-gradient-to-b from-accent to-yellow-400 bg-clip-text text-transparent">
-                    EduLibrary
-                </h1>
+                <div className="relative h-14 aspect-square bg-white">
+                    <Image src='/hero.png' alt="Laibary Image" fill />
+                </div>
 
                 {/* Desktop Menu */}
                 <div className="hidden ipad:flex gap-5">
                     {items.map((item) => (
-                        <Link key={item.title} href={item.link} className="cursor-pointer text-lg hover:text-accent duration-300">
+                        <Link key={item.title} href={item.link} className="cursor-pointer text-lg hover:text-black duration-300">
                             {item.title}
                         </Link>
                     ))}
