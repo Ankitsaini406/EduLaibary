@@ -96,6 +96,12 @@ export function Features() {
     );
 }
 
+type SubPlan = {
+    title: string;
+    features: string[];
+    price: string;
+};
+
 type Plan = {
     title: string;
     price: string;
@@ -104,10 +110,17 @@ type Plan = {
     line?: string;
     features: string[];
     primary: boolean;
+    subPlans?: SubPlan[];
 };
 
+const smsSubTabs = ["1K", "2K", "5K", "10K"];
+const whatsappSubTabs = ["1K", "2K", "5K", "10K"];
+
 export function PriceSection() {
-    const [activeTab, setActiveTab] = useState<"price" | "sms" | "whatsapp">("price");
+    const [activeTab, setActiveTab] = useState<"library" | "sms" | "whatsapp">("library");
+    const [activeSmsSubTab, setActiveSmsSubTab] = useState("1K");
+    const [activeWhatsAppSubTab, setActiveWhatsAppSubTab] = useState("1K");
+
 
     const pricePlans = [
         {
@@ -154,15 +167,37 @@ export function PriceSection() {
         }
     ];
 
-    const smsPlans = [
+    const smsPlans: Plan[] = [
         {
             title: "SMS Subscription",
             price: "₹0.21",
             time: "SMS",
             min: "Minimum SMS to purchase 1000",
-            line: "How many SMS do you want to purchase ?",
-            features: ["Valid for 1 month", "Basic analytics", "Customer support"],
-            primary: false
+            line: "How many SMS do you want to purchase?",
+            features: [],
+            primary: true,
+            subPlans: [
+                {
+                    title: "1K",
+                    price: "₹210",
+                    features: ["1000 SMS will be added", "No expiry, use anytime."],
+                },
+                {
+                    title: "2K",
+                    price: "₹420",
+                    features: ["2000 SMS will be added", "No expiry, use anytime."],
+                },
+                {
+                    title: "5K",
+                    price: "₹1050",
+                    features: ["5000 SMS will be added", "No expiry, use anytime."],
+                },
+                {
+                    title: "10K",
+                    price: "₹2100",
+                    features: ["10000 SMS will be added", "No expiry, use anytime."],
+                }
+            ]
         }
     ];
 
@@ -173,19 +208,41 @@ export function PriceSection() {
             time: "SMS",
             min: "Minimum Messages to purchase 1000",
             line: "How many WhatsApp message do you want to purchase ?",
-            features: ["Chat template access", "Media messages", "Support during business hours"],
-            primary: false
+            features: [],
+            primary: true,
+            subPlans: [
+                {
+                    title: "1K",
+                    price: "₹99",
+                    features: ["1000 WhatsApp SMS will be added", "No expiry, use anytime."],
+                },
+                {
+                    title: "2K",
+                    price: "₹198",
+                    features: ["2000 WhatsApp SMS will be added", "No expiry, use anytime."],
+                },
+                {
+                    title: "5K",
+                    price: "₹495",
+                    features: ["5000 WhatsApp SMS will be added", "No expiry, use anytime."],
+                },
+                {
+                    title: "10K",
+                    price: "₹990",
+                    features: ["10000 WhatsApp SMS will be added", "No expiry, use anytime."],
+                }
+            ]
         }
     ];
 
     const plans = {
-        price: pricePlans,
+        library: pricePlans,
         sms: smsPlans,
         whatsapp: whatsappPlans
     };
 
     const tabLabels = [
-        { key: "price", label: "Price" },
+        { key: "library", label: "Library" },
         { key: "sms", label: "SMS" },
         { key: "whatsapp", label: "WhatsApp" }
     ];
@@ -204,12 +261,12 @@ export function PriceSection() {
                 Choose a plan that fits your business — whether it&apos;s pricing, SMS credits, or WhatsApp support.
             </p>
 
-            {/* Tab Buttons */}
-            <div className="flex justify-center gap-4 mb-8">
+            {/* Main Tab Buttons */}
+            <div className="flex justify-center gap-4 mb-6">
                 {tabLabels.map(tab => (
                     <button
                         key={tab.key}
-                        onClick={() => setActiveTab(tab.key as "price" | "sms" | "whatsapp")}
+                        onClick={() => setActiveTab(tab.key as "library" | "sms" | "whatsapp")}
                         className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${activeTab === tab.key
                             ? "bg-accent text-white"
                             : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -220,48 +277,83 @@ export function PriceSection() {
                 ))}
             </div>
 
-            {/* Plans */}
+            {/* Plan Cards */}
             <div className="flex flex-col md:flex-row gap-4 justify-center pb-10">
-                {plans[activeTab].map((item: Plan) => (
-                    <motion.section
-                        key={item.title}
-                        whileHover={{ scale: 1.05 }}
-                        className="border border-border bg-white text-left rounded-xl p-5 flex flex-col items-center gap-3 w-full md:w-80 shadow-sm"
-                    >
-                        <h4 className="font-black text-lg">{item.title}</h4>
+                {plans[activeTab].map((item: Plan) => {
+                    const currentSubTab = activeTab === "sms" ? activeSmsSubTab : activeWhatsAppSubTab;
+                    const selectedSubPlan = item.subPlans?.find(sub => sub.title === currentSubTab);
 
-                        <h6 className="text-3xl font-semibold">
-                            {item.price}
-                            {item.time && <span className="text-base"> /{item.time}</span>}
-                        </h6>
-
-                        {item.min && (
-                            <p className="text-xs text-gray-600 -mt-2">{item.min}</p>
-                        )}
-
-                        {item.line && (
-                            <p className="text-sm text-gray-600 -mt-2">{item.line}</p>
-                        )}
-
-                        <button
-                            className={`py-2 w-full text-sm font-medium rounded ${item.primary ? "bg-accent text-white" : "border border-accent text-accent"
-                                }`}
+                    return (
+                        <motion.section
+                            key={item.title}
+                            whileHover={{ scale: 1.05 }}
+                            className="border border-border bg-white text-left rounded-xl p-5 flex flex-col items-center gap-3 w-full md:w-80 shadow-sm"
                         >
-                            Choose Plan
-                        </button>
+                            <h4 className="font-black text-lg">{item.title}</h4>
 
-                        <div className="flex flex-col gap-2.5 w-full mt-4 text-gray-700">
-                            {item.features.map((feature, idx) => (
-                                <div key={idx} className="flex items-start gap-1">
-                                    <DoneIcon className="text-accent mt-1" fontSize="small" />
-                                    <span>{feature}</span>
+                            <h6 className="text-3xl font-semibold">
+                                {item.price}
+                                {item.time && <span className="text-base"> /{item.time}</span>}
+                            </h6>
+
+                            {item.min && <p className="text-xs text-gray-600 -mt-2">{item.min}</p>}
+                            {item.line && <p className="text-sm text-gray-600 -mt-2">{item.line}</p>}
+
+                            <button
+                                className={`py-2 w-full text-sm font-medium rounded ${item.primary ? "bg-accent text-white" : "border border-accent text-accent"
+                                    }`}
+                            >
+                                Choose Plan
+                            </button>
+
+                            {/* Sub Tabs */}
+                            {(activeTab === "sms" || activeTab === "whatsapp") && item.subPlans && (
+                                <div className="flex justify-center gap-3 mb-6 flex-wrap">
+                                    {(activeTab === "sms" ? smsSubTabs : whatsappSubTabs).map((sub) => (
+                                        <button
+                                            key={sub}
+                                            onClick={() =>
+                                                activeTab === "sms"
+                                                    ? setActiveSmsSubTab(sub)
+                                                    : setActiveWhatsAppSubTab(sub)
+                                            }
+                                            className={`px-3 py-1.5 rounded-full text-xs font-medium transition ${currentSubTab === sub
+                                                    ? "bg-accent text-white"
+                                                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                                }`}
+                                        >
+                                            {sub}
+                                        </button>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-                    </motion.section>
-                ))}
+                            )}
+
+                            {/* Show Features */}
+                            {item.features && item.features.length > 0 ? (
+                                <div className="flex flex-col gap-2.5 w-full mt-4 text-gray-700">
+                                    {item.features.map((feature, idx) => (
+                                        <div key={idx} className="flex items-start gap-1">
+                                            <DoneIcon className="text-accent mt-1" fontSize="small" />
+                                            <span>{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : selectedSubPlan ? (
+                                <div className="flex flex-col gap-2.5 w-full mt-4 text-gray-700">
+                                    <h5 className="font-semibold text-sm mb-2">{selectedSubPlan.price}</h5>
+                                    {selectedSubPlan.features.map((feature, idx) => (
+                                        <div key={idx} className="flex items-start gap-1">
+                                            <DoneIcon className="text-accent mt-1" fontSize="small" />
+                                            <span>{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : null}
+                        </motion.section>
+                    );
+                })}
             </div>
+
         </motion.div>
     );
 }
-
