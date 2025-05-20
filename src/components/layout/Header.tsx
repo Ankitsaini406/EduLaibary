@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Close, Menu } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
@@ -11,27 +10,37 @@ export default function Header() {
 
     const items = [
         { title: "Home", link: "/" },
-        { title: "Features", link: "#features" },
-        { title: "Pricing", link: "#pricing" },
+        { title: "Features", link: "features" },
+        { title: "Pricing", link: "pricing" },
         // { title: "Testimonials", link: "#" },
-        { title: "Download", link: "#download" },
-        { title: "Contact", link: "#contact" },
-        { title: "About Us", link: "#about-us" },
+        { title: "Download", link: "download" },
+        { title: "Contact", link: "contact" },
+        { title: "About Us", link: "about-us" },
     ];
+
+    const scrollToSection = (link: string) => {
+    const element = document.getElementById(link);
+    if (element) {
+        const yOffset = -80;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        setMenuOpen(false);
+    }
+};
 
     return (
         <header className="fixed w-full top-0 z-50 py-3 shadow-lg bg-accent text-white backdrop-blur-lg">
             <nav className="lg:container flex justify-between items-center mx-auto">
-                <div className="relative h-14 aspect-square bg-white">
+                <div className="relative h-14 aspect-square bg-white rounded-md shadow shadow-white">
                     <Image src='/hero.png' alt="Laibary Image" fill />
                 </div>
 
                 {/* Desktop Menu */}
                 <div className="hidden ipad:flex gap-5">
                     {items.map((item) => (
-                        <Link key={item.title} href={item.link} className="cursor-pointer text-lg hover:text-black duration-300">
+                        <button key={item.title} onClick={() => scrollToSection(item.link)} className="cursor-pointer text-lg hover:text-black duration-300">
                             {item.title}
-                        </Link>
+                        </button>
                     ))}
                 </div>
 
@@ -57,13 +66,13 @@ export default function Header() {
                     >
                         <div className="flex flex-col gap-4 mt-5">
                             {items.map((item) => (
-                                <Link
+                                <button
                                 key={item.title}
-                                href={item.link}
+                                onClick={() => scrollToSection(item.link)}
                                     className="cursor-pointer text-base hover:text-amber-500 duration-300 pb-2 border-b"
                                 >
                                     {item.title}
-                                </Link>
+                                </button>
                             ))}
                         </div>
                     </motion.div>
