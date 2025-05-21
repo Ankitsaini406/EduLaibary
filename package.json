@@ -11,7 +11,9 @@
   "dependencies": {
     "@mui/icons-material": "^7.0.2",
     "clsx": "^2.1.1",
+    "dotenv": "^16.5.0",
     "framer-motion": "^12.7.4",
+    "googleapis": "^149.0.0",
     "lenis": "^1.2.3",
     "next": "15.3.1",
     "postcss": "^8.5.3",

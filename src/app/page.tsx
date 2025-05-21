@@ -1,4 +1,4 @@
-import { AboutUs, AppScreenshots, Features, PriceSection } from "@/components/HomeComponent";
+import { AboutUs, AppScreenshots, ContactUs, Features, PriceSection } from "@/components/HomeComponent";
 import HeroSection from "@/components/Hero";
 
 export default function Home() {
@@ -9,6 +9,7 @@ export default function Home() {
       <Features />
       <AppScreenshots />
       <PriceSection />
+      <ContactUs />
     </div>
   );
 }
