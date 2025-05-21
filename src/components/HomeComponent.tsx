@@ -1,13 +1,9 @@
 "use client";
 
 import DoneIcon from '@mui/icons-material/Done';
-import EventSeatIcon from '@mui/icons-material/EventSeat';
-import Diversity3Icon from '@mui/icons-material/Diversity3';
-import SmsIcon from '@mui/icons-material/Sms';
-import ReportIcon from '@mui/icons-material/Report';
-import CollectionsIcon from '@mui/icons-material/Collections';
 import { motion } from "framer-motion";
 import { useState } from 'react';
+import Image from 'next/image';
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -51,43 +47,63 @@ export function Features() {
                 <h1 className="uppercase text-3xl text-white text-center font-bold pb-6">Our Key Features</h1>
                 <div className="flex flex-wrap justify-center gap-5 w-full">
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <span><EventSeatIcon fontSize='large' /></span>
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/desk.webp' alt='Desk Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Seat Management</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <ReportIcon fontSize='large' />
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/work-schedule.webp' alt='Shift Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Shift Management</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <Diversity3Icon fontSize='large' />
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/group.webp' alt='Mumber Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Member Management</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <SmsIcon fontSize='large' />
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/conversation.webp' alt='Auto SMS Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Auto SMS Reminder</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <ReportIcon fontSize='large' />
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/calendar-with-check.webp' alt='Brnach Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Branch Management</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <CollectionsIcon fontSize='large' />
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/report.webp' alt='Collection Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Collection Report</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <ReportIcon fontSize='large' />
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/enquiry.webp' alt='Enquiry Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Enquiry Management</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <ReportIcon fontSize='large' />
+                            <div className='relative h-10 w-10'>
+                            <Image src='/icons/attendace.webp' alt='Attendance Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Attendance Management</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <ReportIcon fontSize='large' />
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/subsidiaries.webp' alt='Expense Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Expense Management</p>
                     </div>
                     <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <ReportIcon fontSize='large' />
+                        <div className='relative h-10 w-10'>
+                            <Image src='/icons/budget.webp' alt='Budget Image' fill />
+                            </div>
                         <p className="text-sm text-secendory">Tax Management</p>
                     </div>
                 </div>
@@ -353,6 +369,10 @@ export function PriceSection() {
                     );
                 })}
             </div>
+
+            <p className="text-gray-700 text-right text-sm">
+                * All prices are exclusive of taxes. For more details, please contact our support team.
+            </p>
 
         </motion.div>
     );

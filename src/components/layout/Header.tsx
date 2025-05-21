@@ -29,7 +29,7 @@ export default function Header() {
 };
 
     return (
-        <header className="fixed w-full top-0 z-50 py-3 shadow-lg bg-accent text-white backdrop-blur-lg">
+        <header className="fixed w-full top-0 z-50 py-3 px-2 shadow-lg bg-accent text-white backdrop-blur-lg">
             <nav className="lg:container flex justify-between items-center mx-auto">
                 <div className="relative h-14 aspect-square bg-white rounded-md shadow shadow-white">
                     <Image src='/hero.png' alt="Laibary Image" fill />
