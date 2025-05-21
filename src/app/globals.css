@@ -4,6 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --color-border: #6e6e6e;
+  --color-accent: #FF5F1F;
 }
 
 @theme inline {
@@ -22,6 +23,26 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+::-webkit-scrollbar {
+  width: 5px !important;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  padding: 0px;
+  margin: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
 html,body {

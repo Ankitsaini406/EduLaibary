@@ -2,7 +2,7 @@
 
 import DoneIcon from '@mui/icons-material/Done';
 import { motion } from "framer-motion";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const fadeInUp = {
@@ -99,7 +99,15 @@ const images = [
 ]
 
 export function AppScreenshots() {
-    const [activeIndex, setActiveIndex] = useState(2)
+    const [activeIndex, setActiveIndex] = useState(5)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveIndex((prevIndex) => (prevIndex + 1) % images.length)
+        }, 3000)
+
+        return () => clearInterval(interval)
+    }, [])
 
     const getPositionClass = (index: number) => {
         if (index === activeIndex) return 'z-30 scale-100 opacity-100'
@@ -114,19 +122,19 @@ export function AppScreenshots() {
         <section className="bg-white py-12 text-center">
             <h2 className="text-2xl text-accent font-bold mb-6">App Screenshots</h2>
 
-            <div className="relative flex justify-center items-center h-[600px] overflow-hidden">
+            <div className="relative flex justify-center items-center h-[400px] overflow-hidden">
                 {images.map((img, index) => (
                     <div
                         key={index}
                         className={`absolute max-w-md px-4 transition-all duration-700 ease-in-out transform ${getPositionClass(index)}`}
                     >
-                        <div className='relative w-[300px] h-[600px]'>
-                        <Image
-                            src={img}
-                            alt={`Screenshot ${index + 1}`}
-                            fill
+                        <div className='relative w-[200px] h-[400px]'>
+                            <Image
+                                src={img}
+                                alt={`Screenshot ${index + 1}`}
+                                fill
                             />
-                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -136,7 +144,7 @@ export function AppScreenshots() {
                 {images.map((_, index) => (
                     <button
                         key={index}
-                        className={`w-4 h-4 rounded-full transition-transform transform cursor-pointer ${index === activeIndex
+                        className={`w-3 h-3 rounded-full transition-transform transform cursor-pointer ${index === activeIndex
                             ? 'bg-accent scale-110'
                             : 'bg-accent/20 hover:bg-accent/60'
                             }`}
@@ -413,3 +421,4 @@ export function PriceSection() {
         </motion.div>
     );
 }
+
