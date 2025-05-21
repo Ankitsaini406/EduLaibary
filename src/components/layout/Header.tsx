@@ -14,7 +14,7 @@ export default function Header() {
         { title: "Pricing", link: "pricing" },
         // { title: "Testimonials", link: "#" },
         { title: "Download", link: "download" },
-        { title: "Contact", link: "contact" },
+        { title: "Contact", link: "contact-us" },
         { title: "About Us", link: "about-us" },
     ];
 

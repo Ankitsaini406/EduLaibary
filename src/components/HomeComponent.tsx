@@ -4,6 +4,8 @@ import DoneIcon from '@mui/icons-material/Done';
 import { motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { CheckCircle, RemoveCircle } from '@mui/icons-material';
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -119,7 +121,7 @@ export function AppScreenshots() {
     }
 
     return (
-        <section className="bg-white py-12 text-center border border-b-accent">
+        <section className="bg-white py-12 text-center border-b border-b-accent">
             <h2 className="text-2xl text-accent font-bold mb-6">App Screenshots</h2>
 
             <div className="relative flex justify-center items-center h-[400px] overflow-hidden">
@@ -427,109 +429,163 @@ export function ContactUs() {
         name: '',
         email: '',
         phoneNumber: '',
-        message: ''
+        message: '',
     })
+
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+    const [errorMessage, setErrorMessage] = useState('')
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        setStatus('loading')
+        setErrorMessage('')
 
         try {
             const res = await fetch('/api', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData),
             })
 
             if (res.ok) {
-                console.log('Form submitted successfully:', formData)
-                alert('Your message was sent successfully!')
+                setStatus('success')
                 setFormData({ name: '', email: '', phoneNumber: '', message: '' })
             } else {
-                console.error('Failed to submit:', await res.text())
-                alert('Something went wrong. Please try again later.')
+                const errorText = await res.text()
+                setErrorMessage(errorText)
+                setStatus('error')
             }
         } catch (error) {
             console.error('Error:', error)
-            alert('Failed to submit the form. Please try again.')
+            setErrorMessage('Failed to submit the form. Please try again.')
+            setStatus('error')
         }
+
+        setTimeout(() => setStatus('idle'), 5000)
     }
 
     return (
-        <section className="py-12 px-4 bg-gray-100 text-gray-800">
-            <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold text-center mb-8 text-accent">Contact Us</h2>
+        <section id='contact-us' className="py-16 px-4 bg-gray-50 text-gray-800">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                {/* Image section */}
+                <div className="relative w-full h-full">
+                    <Image
+                        src="/contact-us.jpg"
+                        alt="Contact Us"
+                        fill
+                    />
+                </div>
 
-                <form
-                    onSubmit={handleSubmit}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-xl shadow-lg"
-                >
-                    <div className="col-span-1">
-                        <label className="block mb-2 font-semibold">Full Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                            placeholder="Your name"
-                        />
-                    </div>
+                {/* Form section */}
+                <div className="space-y-8">
+                    <h2 className="text-4xl font-extrabold text-accent">Contact Us</h2>
 
-                    <div className="col-span-1">
-                        <label className="block mb-2 font-semibold">Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                            placeholder="your@email.com"
-                        />
-                    </div>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label htmlFor="name" className="block mb-2 font-medium">
+                                    Full Name
+                                </label>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    type="text"
+                                    required
+                                    placeholder="John Doe"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:outline-none"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="email" className="block mb-2 font-medium">
+                                    Email Address
+                                </label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    type="email"
+                                    required
+                                    placeholder="john@example.com"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:outline-none"
+                                />
+                            </div>
+                        </div>
 
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="block mb-2 font-semibold">Phone Number</label>
-                        <input
-                            type="text"
-                            name="phoneNumber"
-                            value={formData.phoneNumber}
-                            onChange={handleChange}
-                            required
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                            placeholder="Phone Number"
-                        />
-                    </div>
+                        <div>
+                            <label htmlFor="phoneNumber" className="block mb-2 font-medium">
+                                Phone Number
+                            </label>
+                            <input
+                                id="phoneNumber"
+                                name="phoneNumber"
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                                type="tel"
+                                required
+                                placeholder="123-456-7890"
+                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:outline-none"
+                            />
+                        </div>
 
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="block mb-2 font-semibold">Message</label>
-                        <textarea
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            rows={5}
-                            required
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                            placeholder="Your message"
-                        ></textarea>
-                    </div>
+                        <div>
+                            <label htmlFor="message" className="block mb-2 font-medium">
+                                Message
+                            </label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                rows={5}
+                                required
+                                placeholder="Type your message here..."
+                                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:outline-none"
+                            />
+                        </div>
 
-                    <div className="col-span-1 md:col-span-2 text-center">
-                        <button
-                            type="submit"
-                            className="bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-dark transition-all"
-                        >
-                            Send Message
-                        </button>
-                    </div>
-                </form>
+                        {status === 'success' && (
+                            <div className="flex items-center gap-2 p-4 rounded-md bg-green-100 text-green-800 border border-green-300 animate-fadeIn">
+                                <CheckCircle className="w-5 h-5" />
+                                <p>Your message was sent successfully!</p>
+                            </div>
+                        )}
+                        {status === 'error' && (
+                            <div className="flex items-center gap-2 p-4 rounded-md bg-red-100 text-red-800 border border-red-300 animate-fadeIn">
+                                <RemoveCircle className="w-5 h-5" />
+                                <p>{errorMessage || 'Something went wrong. Please try again later.'}</p>
+                            </div>
+                        )}
+
+                        <div className="text-center">
+                            <button
+                                type="submit"
+                                disabled={status === 'loading'}
+                                className={`cursor-pointer inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/80 text-white px-6 py-3 rounded-xl font-semibold transition-all ${status === 'loading'
+                                    ? 'opacity-70 cursor-not-allowed'
+                                    : 'hover:bg-accent-dark'
+                                    }`}
+                            >
+                                {status === 'loading' ? (
+                                    <>
+                                        <HourglassEmptyIcon className="animate-spin w-5 h-5" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    'Send Message'
+                                )}
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     )

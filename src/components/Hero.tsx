@@ -31,14 +31,14 @@ export default function HeroSection() {
                         >
                             Download the App
                         </motion.a>
-                        <motion.a
+                        {/* <motion.a
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             href="#features"
                             className="px-6 py-3 border border-accent text-accent rounded-xl hover:bg-accent/5 transition"
                         >
                             Explore Features
-                        </motion.a>
+                        </motion.a> */}
                     </div>
                 </motion.div>
 
