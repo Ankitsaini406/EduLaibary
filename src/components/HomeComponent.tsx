@@ -33,83 +33,119 @@ export function AboutUs() {
     );
 }
 
+const featuresData = [
+    { icon: "/icons/desk.webp", label: "Seat Management", alt: "Seat" },
+    { icon: "/icons/work-schedule.webp", label: "Shift Management", alt: "Shift" },
+    { icon: "/icons/group.webp", label: "Member Management", alt: "Member" },
+    { icon: "/icons/conversation.webp", label: "Auto SMS Reminder", alt: "Auto SMS" },
+    { icon: "/icons/calendar-with-check.webp", label: "Branch Management", alt: "Branch" },
+    { icon: "/icons/report.webp", label: "Collection Report", alt: "Collection" },
+    { icon: "/icons/enquiry.webp", label: "Enquiry Management", alt: "Enquiry" },
+    { icon: "/icons/attendace.webp", label: "Attendance Management", alt: "Attendance" },
+    { icon: "/icons/subsidiaries.webp", label: "Expense Management", alt: "Expense" },
+    { icon: "/icons/budget.webp", label: "Tax Management", alt: "Tax" },
+];
+
 export function Features() {
     return (
-        <motion.div
-            id='features'
-            className="bg-accent"
+        <motion.section
+            id="features"
+            className="bg-accent py-12"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
         >
-            <div className="max-w-[1400px] mx-auto p-5">
-                <h1 className="uppercase text-3xl text-white text-center font-bold pb-6">Our Key Features</h1>
-                <div className="flex flex-wrap justify-center gap-5 w-full">
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/desk.webp' alt='Desk Image' fill />
+            <div className="max-w-[1400px] mx-auto px-5">
+                <h2 className="uppercase text-3xl text-white text-center font-bold pb-10">
+                    Our Key Features
+                </h2>
+
+                <div className="flex flex-wrap justify-center gap-6">
+                    {featuresData.map(({ icon, label, alt }, index) => (
+                        <div
+                            key={index}
+                            className="bg-white rounded-xl p-5 min-w-[250px] flex flex-col items-center gap-3 shadow-md hover:shadow-lg transition"
+                        >
+                            <div className="relative h-10 w-10">
+                                <Image
+                                    src={icon}
+                                    alt={alt || "Feature Icon"}
+                                    fill
+                                    sizes="40px"
+                                    className="object-contain"
+                                />
                             </div>
-                        <p className="text-sm text-secendory">Seat Management</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/work-schedule.webp' alt='Shift Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Shift Management</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/group.webp' alt='Mumber Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Member Management</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/conversation.webp' alt='Auto SMS Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Auto SMS Reminder</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/calendar-with-check.webp' alt='Brnach Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Branch Management</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/report.webp' alt='Collection Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Collection Report</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/enquiry.webp' alt='Enquiry Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Enquiry Management</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                            <div className='relative h-10 w-10'>
-                            <Image src='/icons/attendace.webp' alt='Attendance Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Attendance Management</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/subsidiaries.webp' alt='Expense Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Expense Management</p>
-                    </div>
-                    <div className="bg-white rounded p-5 w-[255px] flex flex-col items-center gap-2">
-                        <div className='relative h-10 w-10'>
-                            <Image src='/icons/budget.webp' alt='Budget Image' fill />
-                            </div>
-                        <p className="text-sm text-secendory">Tax Management</p>
-                    </div>
+                            <p className="text-sm text-secendory text-center">{label}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
-        </motion.div>
+        </motion.section>
     );
+}
+
+const images = [
+    "/images/IMG_1405.webp",
+    "/images/IMG_1497.webp",
+    "/images/IMG_1498.webp",
+    "/images/IMG_1499.webp",
+    "/images/IMG_1500.webp",
+    "/images/IMG_1501.webp",
+    "/images/IMG_1502.webp",
+    "/images/IMG_1503.webp",
+    "/images/IMG_1504.webp",
+    "/images/IMG_1505.webp",
+]
+
+export function AppScreenshots() {
+    const [activeIndex, setActiveIndex] = useState(2)
+
+    const getPositionClass = (index: number) => {
+        if (index === activeIndex) return 'z-30 scale-100 opacity-100'
+        if (index === (activeIndex - 1 + images.length) % images.length)
+            return 'z-20 opacity-50 -translate-x-full scale-90'
+        if (index === (activeIndex + 1) % images.length)
+            return 'z-20 opacity-50 translate-x-full scale-90'
+        return 'z-10 opacity-0 scale-75'
+    }
+
+    return (
+        <section className="bg-white py-12 text-center">
+            <h2 className="text-2xl text-accent font-bold mb-6">App Screenshots</h2>
+
+            <div className="relative flex justify-center items-center h-[600px] overflow-hidden">
+                {images.map((img, index) => (
+                    <div
+                        key={index}
+                        className={`absolute max-w-md px-4 transition-all duration-700 ease-in-out transform ${getPositionClass(index)}`}
+                    >
+                        <div className='relative w-[300px] h-[600px]'>
+                        <Image
+                            src={img}
+                            alt={`Screenshot ${index + 1}`}
+                            fill
+                            />
+                            </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* Dots */}
+            <div className="mt-6 flex justify-center gap-3">
+                {images.map((_, index) => (
+                    <button
+                        key={index}
+                        className={`w-4 h-4 rounded-full transition-transform transform cursor-pointer ${index === activeIndex
+                            ? 'bg-accent scale-110'
+                            : 'bg-accent/20 hover:bg-accent/60'
+                            }`}
+                        onClick={() => setActiveIndex(index)}
+                    ></button>
+                ))}
+            </div>
+        </section>
+    )
 }
 
 type SubPlan = {
@@ -334,8 +370,8 @@ export function PriceSection() {
                                                     : setActiveWhatsAppSubTab(sub)
                                             }
                                             className={`px-3 py-1.5 rounded-full text-xs font-medium transition ${currentSubTab === sub
-                                                    ? "bg-accent text-white"
-                                                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                                ? "bg-accent text-white"
+                                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                                                 }`}
                                         >
                                             {sub}

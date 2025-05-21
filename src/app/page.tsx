@@ -1,4 +1,4 @@
-import { AboutUs, Features, PriceSection } from "@/components/HomeComponent";
+import { AboutUs, AppScreenshots, Features, PriceSection } from "@/components/HomeComponent";
 import HeroSection from "@/components/Hero";
 
 export default function Home() {
@@ -7,6 +7,7 @@ export default function Home() {
       <HeroSection />
       <AboutUs />
       <Features />
+      <AppScreenshots />
       <PriceSection />
     </div>
   );
