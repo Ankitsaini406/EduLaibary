@@ -13,7 +13,7 @@ export default function Header() {
         { title: "Features", link: "features" },
         { title: "Pricing", link: "pricing" },
         // { title: "Testimonials", link: "#" },
-        { title: "Download", link: "download" },
+        // { title: "Download", link: "download" },
         { title: "Contact", link: "contact-us" },
         { title: "About Us", link: "about-us" },
     ];

@@ -26,7 +26,8 @@ export default function HeroSection() {
                         <motion.a
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            href="#download"
+                            href="/edulibrary.apk"
+                            download='Edulibrary.apk'
                             className="px-6 py-3 bg-accent text-white rounded-xl shadow-lg hover:bg-accent/70 transition"
                         >
                             Download the App
