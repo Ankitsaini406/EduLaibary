@@ -361,12 +361,11 @@ export function PriceSection() {
                             {item.min && <p className="text-xs text-gray-600 -mt-2">{item.min}</p>}
                             {item.line && <p className="text-sm text-gray-600 -mt-2">{item.line}</p>}
 
-                            <button
-                                className={`py-2 w-full text-sm font-medium rounded ${item.primary ? "bg-accent text-white" : "border border-accent text-accent"
-                                    }`}
+                            <span
+                                className="py-2 w-full font-medium rounded text-accent text-center "
                             >
-                                Choose Plan
-                            </button>
+                                Plan Details
+                            </span>
 
                             {/* Sub Tabs */}
                             {(activeTab === "sms" || activeTab === "whatsapp") && item.subPlans && (

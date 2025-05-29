@@ -38,7 +38,7 @@ export default function Header() {
                 {/* Desktop Menu */}
                 <div className="hidden ipad:flex gap-5">
                     {items.map((item) => (
-                        <button key={item.title} onClick={() => scrollToSection(item.link)} className="cursor-pointer text-lg hover:text-black duration-300">
+                        <button key={item.title} onClick={() => scrollToSection(item.link)} className="cursor-pointer text-lg border bg-white text-accent px-2 rounded-md hover:text-white hover:bg-accent hover:border-white duration-300">
                             {item.title}
                         </button>
                     ))}
@@ -69,7 +69,7 @@ export default function Header() {
                                 <button
                                 key={item.title}
                                 onClick={() => scrollToSection(item.link)}
-                                    className="cursor-pointer text-base hover:text-amber-500 duration-300 pb-2 border-b"
+                                    className="cursor-pointer text-base border bg-white text-accent py-4 rounded-md hover:text-white hover:bg-accent hover:border-white duration-300 border-b"
                                 >
                                     {item.title}
                                 </button>
