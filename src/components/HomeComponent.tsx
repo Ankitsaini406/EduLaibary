@@ -329,7 +329,7 @@ export function PriceSection() {
                     <button
                         key={tab.key}
                         onClick={() => setActiveTab(tab.key as "library" | "sms" | "whatsapp")}
-                        className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${activeTab === tab.key
+                        className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${activeTab === tab.key
                             ? "bg-accent text-white"
                             : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                             }`}
@@ -378,7 +378,7 @@ export function PriceSection() {
                                                     ? setActiveSmsSubTab(sub)
                                                     : setActiveWhatsAppSubTab(sub)
                                             }
-                                            className={`px-3 py-1.5 rounded-full text-xs font-medium transition ${currentSubTab === sub
+                                            className={`px-3 py-1.5 rounded-full text-xs font-medium transition cursor-pointer ${currentSubTab === sub
                                                 ? "bg-accent text-white"
                                                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                                                 }`}
