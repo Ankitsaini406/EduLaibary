@@ -46,6 +46,7 @@ const featuresData = [
     { icon: "/icons/attendace.webp", label: "Attendance Management", alt: "Attendance" },
     { icon: "/icons/subsidiaries.webp", label: "Expense Management", alt: "Expense" },
     { icon: "/icons/budget.webp", label: "Tax Management", alt: "Tax" },
+    { icon: "/icons/export.png", label: "Export Reports", alt: "Export Reports" },
 ];
 
 export function Features() {

@@ -32,7 +32,7 @@ export default function Footer() {
                     <h3 className="text-lg font-semibold mb-2">Contact</h3>
                     <ul className="space-y-1 text-gray-300 text-sm">
                         <li>Email: <a href="mailto:support@edulibrary.com" className="hover:text-accent">support@edulibrary.com</a></li>
-                        <li>Phone: <a href="tel:+911234567890" className="hover:text-accent">+91 8058885858</a></li>
+                        <li>Phone: <a href="tel:+911234567890" className="hover:text-accent">+91 8233924949</a></li>
                         <li>Address: Webraintech Complex, Near Chandpool gate, Sikar, Rajsthan, India</li>
                     </ul>
                 </div>
